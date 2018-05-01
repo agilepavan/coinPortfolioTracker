@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "lint": "eslint src/**/*.js src/**/*.mjs",
     "build:watch": "concurrently \"npm run\" \"webpack -w\"",
     "start": "node server.js"
   },
