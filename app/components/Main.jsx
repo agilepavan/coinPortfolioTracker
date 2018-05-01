@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, IndexLink, Link} from 'react-router-dom';
+import Input from 'Input';
 
 const Main = (props) => {
   return (
@@ -7,7 +7,10 @@ const Main = (props) => {
       <div className="row">
         <div className="columns medium-8 large-8 small-centered">
           <h2 id="header">Crypto Coin Portfolio</h2>
-          {props.children}
+          {/* <Input /> */}
+          <div>
+            {props.children}
+          </div>
         </div>
       </div>
     </div>

@@ -23,9 +23,9 @@ module.exports = {
     root: __dirname,
     alias: {
       config$: './configs/app-config.js',
-      react: './vendor/react-master',
+      // react: './vendor/react-master',
       Main: 'app/components/Main.jsx',
-      Nav: 'app/components/Nav.jsx',
+      Input: 'app/components/shared/Input.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },
