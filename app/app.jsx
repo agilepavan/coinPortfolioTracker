@@ -13,4 +13,4 @@ ReactDOM.render(
   <HashRouter history={hashHistory}>
     <Main />
   </HashRouter>,
-  document.getElementById('app'));
+document.getElementById('app'));
