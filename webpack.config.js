@@ -22,28 +22,22 @@ module.exports = {
   resolve: {
     root: __dirname,
     alias: {
+      config$: './configs/app-config.js',
+      react: './vendor/react-master',
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
-      Weather: 'app/components/Weather.jsx',
-      About: 'app/components/About.jsx',
-      Examples: 'app/components/Examples.jsx',
-      Links: 'app/components/Links.jsx',
-      WeatherForm: 'app/components/WeatherForm.jsx',
-      WeatherMessage: 'app/components/WeatherMessage.jsx',
-      OpenWeatherMap: 'app/api/OpenWeatherMap.jsx',
-      ErrorModal: 'app/components/ErrorModal.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [
       {
-        loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'stage-0']
         },
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader'
       }
     ]
   },
