@@ -7,7 +7,6 @@ const Main = (props) => {
       <div className="row">
         <div className="columns medium-8 large-8 small-centered">
           <h2 id="header">Crypto Coin Portfolio</h2>
-          {/* <Input /> */}
           <div>
             {props.children}
           </div>

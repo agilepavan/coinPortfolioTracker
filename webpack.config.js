@@ -22,8 +22,6 @@ module.exports = {
   resolve: {
     root: __dirname,
     alias: {
-      config$: './configs/app-config.js',
-      // react: './vendor/react-master',
       Main: 'app/components/Main.jsx',
       Input: 'app/components/shared/Input.jsx',
     },
