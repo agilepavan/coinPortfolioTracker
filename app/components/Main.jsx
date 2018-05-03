@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink, IndexLink, Link} from 'react-router-dom';
-
+import '../../src/styles/scss/components/Main.scss';
 const Main = (props) => {
   return (
     <div>

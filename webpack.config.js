@@ -1,4 +1,5 @@
 var webpack = require ('webpack');
+var path = require('path');
 
 module.exports = {
   entry: [
@@ -37,7 +38,12 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader'
-      }
+      },
+      {
+        test: /\.scss$/,
+        include: path.appSrc,
+        loaders: ["style", "css", "sass"]
+      },
     ]
   },
   devtool: 'cheap-module-eval-source-map'
