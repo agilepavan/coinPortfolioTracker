@@ -22,10 +22,9 @@ module.exports = {
   resolve: {
     root: __dirname,
     alias: {
-      config$: './configs/app-config.js',
-      react: './vendor/react-master',
       Main: 'app/components/Main.jsx',
-      Nav: 'app/components/Nav.jsx',
+      SearchForm: 'app/components/SearchForm.jsx',
+      Input: 'app/components/shared/Input.jsx',
     },
     extensions: ['', '.js', '.jsx']
   },

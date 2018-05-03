@@ -6,8 +6,8 @@ const Main = (props) => {
     <div>
       <div className="row">
         <div className="columns medium-8 large-8 small-centered">
-          <h2 id="header">Crypto Coin Portfolio</h2>
-          {props.children}
+          <h3 id="header">Crypto Coin Portfolio</h3>
+            {props.children}
         </div>
       </div>
     </div>
