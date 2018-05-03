@@ -8,7 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Main file', () => {
   const wrapper = Enzyme.shallow(<Main />);
   test('should contain h tag', () => {
-    expect(wrapper.find('h2').exists()).toBe(true);
+    expect(wrapper.find('h3').exists()).toBe(true);
   });
 
   test('should contain h3 with id', () => {
