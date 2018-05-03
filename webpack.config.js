@@ -23,6 +23,7 @@ module.exports = {
     root: __dirname,
     alias: {
       Main: 'app/components/Main.jsx',
+      SearchForm: 'app/components/SearchForm.jsx',
       Input: 'app/components/shared/Input.jsx',
     },
     extensions: ['', '.js', '.jsx']

@@ -1,15 +1,13 @@
 import React from 'react';
-import Input from 'Input';
+import {NavLink, IndexLink, Link} from 'react-router-dom';
 
 const Main = (props) => {
   return (
     <div>
       <div className="row">
         <div className="columns medium-8 large-8 small-centered">
-          <h2 id="header">Crypto Coin Portfolio</h2>
-          <div>
+          <h3 id="header">Crypto Coin Portfolio</h3>
             {props.children}
-          </div>
         </div>
       </div>
     </div>

@@ -9,12 +9,7 @@ class Input extends Component {
     // valid: true,
   };
 
-  this.onChangeInput = this.onChangeInput.bind(this);
-  this.isValid = this.isValid.bind(this);
-  }
-
-  componentWillMount() {
-   this.isValid();
+  this.onChange = this.onChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,7 +26,11 @@ class Input extends Component {
   render() {
     return (
     <div>
+      <label>
+        <h6>{this.props.label}</h6>
+      </label>
       <input
+        type="text"
         value={this.state.inputValue}
       />
     </div>
@@ -39,8 +38,13 @@ class Input extends Component {
   }
 }
 
+Input.defaultProps = {
+  label: '',
+};
+
 Input.propTypes = {
   value: PropTypes.string.isRequired,
+  label: PropTypes.string,
 };
 
 export default Input;
