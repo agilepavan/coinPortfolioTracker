@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Input from 'Input';
+import Input from '../../app/components/shared/Input.jsx';
 
 class SearchForm extends Component {
   onFormSubmit(e){

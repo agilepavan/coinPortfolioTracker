@@ -7,7 +7,8 @@
     "test": "jest",
     "lint": "eslint src/**/*.js src/**/*.mjs",
     "build:watch": "concurrently \"npm run\" \"webpack -w\" \"sass --watch src/styles/scss:src/styles/css\"",
-    "start": "node server.js"
+    "start": "node server.js",
+    "app": "concurrently \"npm run start \" \"npm run build:watch\""
   },
   "author": "Rekha Pavan",
   "license": "MIT",
@@ -46,6 +47,6 @@
     "sass-loader": "^7.0.1",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.13"
+    "webpack": "^2.1.0-beta.22"
   }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, HashRouter, IndexRoute, hashHistory, Switch } from 'react-router-dom';
-import Main from 'Main';
-import SearchForm from 'SearchForm';
+import Main from '../app/components/Main.jsx';
+import SearchForm from '../app/components/SearchForm.jsx';
 
 // Load foundation
 require ('style!css!foundation-sites/dist/css/foundation.min.css');

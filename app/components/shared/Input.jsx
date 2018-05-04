@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../../../src/styles/scss/components/Main.scss';
 
 class Input extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class Input extends Component {
         <h6>{this.props.label}</h6>
       </label>
       <input
+        className="inputs"
         type="text"
         value={this.state.inputValue}
       />

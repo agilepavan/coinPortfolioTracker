@@ -29,6 +29,10 @@ module.exports = {
     },
     extensions: ['', '.js', '.jsx']
   },
+  devServer: {
+     inline: false,
+     contentBase: "./dist",
+ },
   module: {
     loaders: [
       {
