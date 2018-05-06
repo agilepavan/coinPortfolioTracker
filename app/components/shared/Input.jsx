@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import Foundation from 'react-foundation';
 import PropTypes from 'prop-types';
-import '../../../src/styles/scss/components/Main.scss';
 
+const InputStyles = styled.input`
+  border-radius: 5px;
+  height: 20px;
+`;
+
+const Label = styled.label`
+  font-size: 1rem;
+`
 class Input extends Component {
   constructor(props) {
   super(props);
@@ -27,10 +36,11 @@ class Input extends Component {
   render() {
     return (
     <div>
-      <label>
-        <h6>{this.props.label}</h6>
-      </label>
-      <input
+      <Label>
+        {this.props.label}
+      </Label>
+      <br />
+      <InputStyles
         className="inputs"
         type="text"
         value={this.state.inputValue}
