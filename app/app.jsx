@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import { Route, HashRouter, IndexRoute, hashHistory, Switch } from 'react-router-dom';
-import Main from 'Main';
-import SearchForm from 'SearchForm';
+import Main from '../app/components/Main.jsx';
+import SearchForm from '../app/components/SearchForm.jsx';
 
-// Load foundation
-require ('style!css!foundation-sites/dist/css/foundation.min.css');
-require('style!css!foundation-sites/dist/css/foundation-float.min.css');
-
-$(document).foundation();
 
 ReactDOM.render(
   <HashRouter history={hashHistory}>

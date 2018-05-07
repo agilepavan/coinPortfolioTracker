@@ -7,7 +7,8 @@
     "test": "jest",
     "lint": "eslint src/**/*.js src/**/*.mjs",
     "build:watch": "concurrently \"npm run\" \"webpack -w\" \"sass --watch src/styles/scss:src/styles/css\"",
-    "start": "node server.js"
+    "start": "node server.js",
+    "app": "concurrently \"npm run start \" \"npm run build:watch\""
   },
   "author": "Rekha Pavan",
   "license": "MIT",
@@ -23,11 +24,13 @@
     "jest": "^22.4.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-foundation": "^0.9.5",
     "react-router": "^2.0.0",
     "react-router-dom": "^4.2.2",
     "react-scripts-ts": "2.8.0",
     "regenerator-runtime": "^0.11.1",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.4.0",
+    "styled-components-theme": "^1.0.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -46,6 +49,6 @@
     "sass-loader": "^7.0.1",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.13"
+    "webpack": "^2.1.0-beta.22"
   }
 }

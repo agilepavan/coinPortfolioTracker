@@ -3,8 +3,8 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    'script!jquery/dist/jquery.min.js',
-    'script!foundation-sites/dist/js/foundation.min.js',
+    'script-loader!jquery/dist/jquery.min.js',
+    'script-loader!foundation-sites/dist/js/foundation.min.js',
     './app/app.jsx'
   ],
   externals: {
@@ -21,28 +21,28 @@ module.exports = {
     filename: './public/bundle.js'
   },
   resolve: {
-    root: __dirname,
+    modules: [__dirname, 'node_modules'],
     alias: {
       Main: 'app/components/Main.jsx',
       SearchForm: 'app/components/SearchForm.jsx',
       Input: 'app/components/shared/Input.jsx',
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx']
   },
   module: {
     loaders: [
       {
+        loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'stage-0']
         },
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader'
+        exclude: /(node_modules|bower_components)/
       },
       {
         test: /\.scss$/,
         include: path.appSrc,
-        loaders: ["style", "css", "sass"]
+        loaders: ["style-loader", "css-loader", "sass-loader"]
       },
     ]
   },

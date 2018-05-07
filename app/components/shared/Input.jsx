@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import Foundation from 'react-foundation';
 import PropTypes from 'prop-types';
 
 class Input extends Component {
@@ -27,9 +29,11 @@ class Input extends Component {
     return (
     <div>
       <label>
-        <h6>{this.props.label}</h6>
+        {this.props.label}
       </label>
+      <br />
       <input
+        className="inputs"
         type="text"
         value={this.state.inputValue}
       />
