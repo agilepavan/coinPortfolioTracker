@@ -3,14 +3,6 @@ import styled from 'styled-components';
 import Foundation from 'react-foundation';
 import PropTypes from 'prop-types';
 
-const InputStyles = styled.input`
-  border-radius: 5px;
-  height: 20px;
-`;
-
-const Label = styled.label`
-  font-size: 1rem;
-`
 class Input extends Component {
   constructor(props) {
   super(props);
@@ -36,11 +28,11 @@ class Input extends Component {
   render() {
     return (
     <div>
-      <Label>
+      <label>
         {this.props.label}
-      </Label>
+      </label>
       <br />
-      <InputStyles
+      <input
         className="inputs"
         type="text"
         value={this.state.inputValue}

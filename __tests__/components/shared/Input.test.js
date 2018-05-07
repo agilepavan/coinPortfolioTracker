@@ -7,13 +7,13 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Input shared component file', () => {
   const wrapper = Enzyme.shallow(<Input />);
-  console.log(wrapper);
+
   test('should contain Input', () => {
     expect(wrapper.find('input').exists()).toBe(true);
   });
 
   test('should contain label', () => {
-    expect(wrapper.find('label').exists()).toBe(true);
+    expect(wrapper.find('label').exists()).toEqual(true);
   });
 
 });
