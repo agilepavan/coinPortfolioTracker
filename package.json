@@ -22,6 +22,7 @@
     "enzyme-adapter-react-16": "^1.0.2",
     "express": "^4.13.4",
     "jest": "^22.4.3",
+    "ramda": "^0.25.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-foundation": "^0.9.5",
@@ -49,6 +50,6 @@
     "sass-loader": "^7.0.1",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
-    "webpack": "^2.1.0-beta.22"
+    "webpack": "^3.12.0"
   }
 }

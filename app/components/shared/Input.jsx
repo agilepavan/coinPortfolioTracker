@@ -21,8 +21,7 @@ class Input extends Component {
   }
 
   onChange() {
-   this.isValid();
-   this.props.onChange(this.props.index, this.state.inputValue);
+   this.props.onChange(this.state.inputValue);
   }
 
   render() {
@@ -35,7 +34,8 @@ class Input extends Component {
       <input
         className="inputs"
         type="text"
-        value={this.state.inputValue}
+        ref={this.props.reference}
+        onChange={this.onChangeInput}
       />
     </div>
   )
@@ -44,11 +44,12 @@ class Input extends Component {
 
 Input.defaultProps = {
   label: '',
+  reference: '',
 };
 
 Input.propTypes = {
-  value: PropTypes.string.isRequired,
   label: PropTypes.string,
+  reference: PropTypes.string.isRequired,
 };
 
 export default Input;
