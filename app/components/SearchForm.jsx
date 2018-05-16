@@ -24,6 +24,17 @@ class SearchForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    fetch('https://bittrex.com/api/v1.1/public/getmarkets', {
+      mode: 'no-cors',
+      header: {
+        'Access-Control-Allow-Origin':'*',
+      }
+    }).then(res => {
+      return res.body ? JSON.parse(res.body) : null;
+    }).then(api =>{
+      console.log(JSON.stringify(api));
+    });
   }
 
   render() {
