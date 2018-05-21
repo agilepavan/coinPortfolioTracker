@@ -28,14 +28,14 @@ class SearchForm extends Component {
     const getApiKey = this.state.apiKey;
     const getBalancesBittrex = `https://bittrex.com/api/v1.1/account/getbalances?apikey=${getApiKey}`;
     return axios.get(getBalancesBittrex).then(function(res) {
-      if(res.data) {
+      if(!res.data.success) {
         console.log(res);
-          throw new Error(res.data.success);
+          throw new Error(res.data.message);
         } else  {
           return res.data.result;
         }
        }, function(res) {
-         throw new Error(res.data.success);
+         throw new Error(res.data.message);
       });
   }
 
