@@ -1,4 +1,5 @@
 var express = require('express');
+const cors = require('cors');
 
 // Create our app
 const app = express();
@@ -11,6 +12,11 @@ app.use(function (req, res, next) {
     next();
   }
 })
+
+app.use(cors({
+  origin: 'http://localhost:8000',
+  credentials: true
+}));
 
 app.use(express.static('public'));
 
