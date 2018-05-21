@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import axios from 'axios';
 import { view, lensPath } from 'ramda';
 import Input from '../../app/components/shared/Input.jsx';
 import Button from '../../app/components/shared/Button.jsx';
@@ -14,6 +15,7 @@ class SearchForm extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getBalance = this.getBalance.bind(this);
   }
 
   handleChange(event) {
@@ -22,19 +24,24 @@ class SearchForm extends Component {
     })
   }
 
+  getBalance() {
+    const getApiKey = this.state.apiKey;
+    const getBalancesBittrex = `https://bittrex.com/api/v1.1/account/getbalances?apikey=${getApiKey}`;
+    return axios.get(getBalancesBittrex).then(function(res) {
+      if(res.data) {
+        console.log(res);
+          throw new Error(res.data.success);
+        } else  {
+          return res.data.result;
+        }
+       }, function(res) {
+         throw new Error(res.data.success);
+      });
+  }
+
   handleSubmit(event) {
     event.preventDefault();
-
-    fetch('https://bittrex.com/api/v1.1/public/getmarkets', {
-      mode: 'no-cors',
-      header: {
-        'Access-Control-Allow-Origin':'*',
-      }
-    }).then(res => {
-      return res.body ? JSON.parse(res.body) : null;
-    }).then(api =>{
-      console.log(JSON.stringify(api));
-    });
+    this.getBalance();
   }
 
   render() {
