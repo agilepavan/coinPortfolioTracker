@@ -1,6 +1,5 @@
 var express = require('express');
-const cors = require('cors');
-
+const axios = require('axios');
 // Create our app
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -11,12 +10,18 @@ app.use(function (req, res, next) {
     } else {
     next();
   }
-})
+});
 
-app.use(cors({
-  origin: 'http://localhost:8000',
-  credentials: true
-}));
+app.use('/bittrex/:apiKey', function (req, res) {
+    const getApiKey = req.params.apiKey;
+    const bittrexApi = `https://bittrex.com/api/v1.1/account/getbalances?apikey=${getApiKey}&nojsoncallback=1`;
+    const requestUrl = `${bittrexApi}`;
+    axios.get(requestUrl).then((response) => {
+      console.log(response.data);
+     res.send(response.data);
+   });
+});
+
 
 app.use(express.static('public'));
 

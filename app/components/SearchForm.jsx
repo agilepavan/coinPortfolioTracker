@@ -26,29 +26,15 @@ class SearchForm extends Component {
 
   getBalance() {
     const getApiKey = this.state.apiKey;
-    const getBalancesBittrex = `https://bittrex.com/api/v1.1/account/getbalances?apikey=${getApiKey}`;
-    return axios.get(getBalancesBittrex,{
-      method: 'GET',
-      // mode: 'no-cors',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Request-Method': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-        'Access-Control-Request-Headers': 'Origin, Content-Type, X-Auth-Token',
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,
-      credentials: 'same-origin',
-    })
-    .then(function(res) {
-      if (!res.data.success) {
-        console.log(res);
+    const requestUrl = `/bittrex/${getApiKey}`;
+      return axios.get(requestUrl).then((res) => {
+        console.log(requestUrl, 'fff');
+      if(res.status !== 200) {
         throw new Error(res.data.message);
-      } else {
-        return res.data.result;
+      } else  {
+        return res.data.items;
       }
-    }, function(res) {
-      throw new Error(res.data.message);
-    });
+     });
   }
 
   handleSubmit(event) {
