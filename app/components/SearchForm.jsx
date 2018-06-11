@@ -5,6 +5,7 @@ import { view, lensPath } from 'ramda';
 import Input from '../../app/components/shared/Input.jsx';
 import Button from '../../app/components/shared/Button.jsx';
 import '../../src/styles/scss/components/Input.scss';
+import * as bittrex from 'api-bittrex';
 
 class SearchForm extends Component {
   constructor() {
@@ -26,12 +27,26 @@ class SearchForm extends Component {
 
   getBalance() {
     const getApiKey = this.state.apiKey;
+    const getApiSecret = this.state.apiSecret;
     const requestUrl = `/bittrex/${getApiKey}`;
+
       return axios.get(requestUrl).then((res) => {
-        console.log(requestUrl, 'fff');
+        console.log(requestUrl);
       if(res.status !== 200) {
         throw new Error(res.data.message);
       } else  {
+        bittrex.options({
+          'apikey' : getApiKey,
+          'apisecret' : getApiSecret,
+          'stream' : false,
+          'verbose' : false,
+          'cleartext' : false
+        });
+
+        bittrex.getbalances( function( data, err ) {
+          console.log(data.result, 'front-end');
+          return data.result;
+        });
         return res.data.items;
       }
      });
