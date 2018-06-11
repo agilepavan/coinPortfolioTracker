@@ -31,7 +31,7 @@ class SearchForm extends Component {
     const requestUrl = `/bittrex/${getApiKey}`;
 
       return axios.get(requestUrl).then((res) => {
-        console.log(requestUrl);
+      console.log(requestUrl);
       if(res.status !== 200) {
         throw new Error(res.data.message);
       } else  {
