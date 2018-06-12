@@ -28,9 +28,16 @@ class SearchForm extends Component {
   getBalance() {
     const getApiKey = this.state.apiKey;
     const getApiSecret = this.state.apiSecret;
-    const requestUrl = `/bittrex/${getApiKey}`;
-
-      return axios.get(requestUrl).then((res) => {
+    const requestUrl = encodeURI(`/bittrex/${getApiKey}/${getApiSecret}`);
+    axios.get(requestUrl, {
+      mode: 'no-cors',
+      url: 'http://localhost:8000',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-control-Allow-Headers': getApiSecret,
+      },
+    }).then((res) => {
       console.log(requestUrl);
       if(res.status !== 200) {
         throw new Error(res.data.message);
@@ -40,7 +47,7 @@ class SearchForm extends Component {
           'apisecret' : getApiSecret,
           'stream' : false,
           'verbose' : false,
-          'cleartext' : false
+          'cleartext' : false,
         });
 
         bittrex.getbalances( function( data, err ) {
