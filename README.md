@@ -1,5 +1,5 @@
-##1.0.0
-Setting up the new weather app with React
+A cryptocurrency app. 
 
-##versioning numbers
-would be adding version numbers here and a little what we did with it.
+Details will follow soon.
+
+Live website is http://coinportfoliotracker.com/
