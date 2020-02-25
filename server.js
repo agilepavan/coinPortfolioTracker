@@ -1,22 +1,37 @@
 var express = require('express');
 const axios = require('axios');
+const crypto = require('crypto');
 // Create our app
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-app.use(function (req, res, next) {
-  if(req.headers['x-forwarded-proto'] === 'https') {
-    res.redirect('http://'+req.hostname + req.url)
-    } else {
-    next();
-  }
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
 });
 
-app.use('/bittrex/:apiKey', function (req, res) {
+app.use('/bittrex/:apiKey/:apiSecret', function (req, res) {
     const getApiKey = req.params.apiKey;
-    const bittrexApi = `https://bittrex.com/api/v1.1/account/getbalances?apikey=${getApiKey}&nojsoncallback=1`;
+    const getApiSecret = req.params.apiSecret;
+    console.log(getApiSecret);
+    const nonce = Math.floor(new Date().getTime()/1000);
+    const bittrexApi = encodeURI(`https://bittrex.com/api/v1.1/account/getbalances?apikey=${getApiKey}&nonce=${nonce}`);
+    const hmac = crypto.createHmac('sha512', bittrexApi, getApiSecret);
     const requestUrl = `${bittrexApi}`;
-    axios.get(requestUrl).then((response) => {
+
+    axios.get(requestUrl, {
+      mode: 'no-cors',
+      url: PORT,
+      headers: {
+        'Content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-control-Allow-Headers': getApiSecret,
+      },
+    }).then((response) => {
+      console.log(hmac.digest('hex'));
       console.log(response.data);
      res.send(response.data);
    });
